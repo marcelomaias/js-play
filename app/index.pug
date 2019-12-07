@@ -1,4 +1,12 @@
 extends includes/layout
 
 block content
-  h1 Uia
+    form
+        .formItem
+            label(for="name") Name
+            input(id="name" type="text" required)
+        .formItem
+            label(for="email") Email
+            input(id="email" type="email" required)
+        .formItem
+            button(type="submit") Send

@@ -3,7 +3,9 @@
   "engines": {
     "node": ">=4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "formbouncerjs": "^1.4.6"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
