@@ -48,3 +48,15 @@ const printItem = els => {
   container.innerHTML = theItems;
   document.body.append(container);
 };
+
+window.addEventListener("scroll", scroll);
+
+function scroll() {
+  let scrolled = window.pageYOffset;
+  var hero = document.querySelector(".hero");
+  var coords = "0% " + (-(scrolled * 0.3) + "px");
+  hero.style.backgroundPosition = coords;
+
+  // hero.style.top = -(scrolled * 0.2) + "px";
+  // console.log(scrolled);
+}
