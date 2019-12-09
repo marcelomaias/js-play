@@ -1,9 +1,9 @@
-import Bouncer from 'formbouncerjs';
-import messages from './components/formMessages';
+import Bouncer from "formbouncerjs";
+import messages from "./components/formMessages";
 
 let items = [];
 
-const validate = new Bouncer('form', {
+const validate = new Bouncer("form", {
   messages: messages,
   // Form Submission
   disableSubmit: true, // If true, native form submission is suppressed even when form validates
@@ -12,7 +12,7 @@ const validate = new Bouncer('form', {
 });
 // Detect a successful form validation
 document.addEventListener(
-  'bouncerFormValid',
+  "bouncerFormValid",
   function(e) {
     // The successfully validated form
     const form = e.target;
@@ -30,7 +30,7 @@ function addItem(form) {
   };
   items.push(item);
   form.reset();
-  localStorage.setItem('Items', JSON.stringify(items));
+  localStorage.setItem("Items", JSON.stringify(items));
   printItem(items);
 }
 
@@ -42,21 +42,21 @@ const printItem = els => {
     <p>${item.email}</p>
   `;
     })
-    .join(' ');
+    .join(" ");
 
-  const container = document.getElementById('container');
+  const container = document.getElementById("container");
   container.innerHTML = theItems;
   document.body.append(container);
 };
 
-var hero = document.querySelector('.hero');
+var hero = document.querySelector(".hero");
 if (hero) {
-  window.addEventListener('scroll', scroll);
+  window.addEventListener("scroll", scroll);
 
   function scroll() {
     let scrolled = window.pageYOffset;
 
-    var coords = '0% ' + (-(scrolled * 0.3) + 'px');
+    var coords = "0% " + (-(scrolled * 0.3) + "px");
     hero.style.backgroundPosition = coords;
 
     // hero.style.top = -(scrolled * 0.2) + "px";
