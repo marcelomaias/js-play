@@ -109,6 +109,12 @@ function images() {
     .pipe(dest("dist/images"));
 }
 
+function svgs() {
+  return src("app/images/**/*.svg").pipe(
+    $.if(!isProd, dest(".tmp/images"), dest("dist/images"))
+  );
+}
+
 function fonts() {
   return src("app/fonts/**/*.{eot,svg,ttf,woff,woff2}").pipe(
     $.if(!isProd, dest(".tmp/fonts"), dest("dist/fonts"))
@@ -135,6 +141,7 @@ const build = series(
     lint,
     series(parallel(views, styles, scripts), html),
     images,
+    svgs,
     fonts,
     extras
   ),
@@ -200,7 +207,7 @@ let serve;
 if (isDev) {
   serve = series(
     clean,
-    parallel(views, styles, scripts, fonts),
+    parallel(views, styles, scripts, svgs, fonts),
     startAppServer
   );
 } else if (isTest) {
