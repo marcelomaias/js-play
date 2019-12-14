@@ -5,7 +5,8 @@
   },
   "dependencies": {
     "formbouncerjs": "^1.4.6",
-    "rellax": "^1.10.0"
+    "rellax": "^1.10.0",
+    "scroll-out": "^2.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

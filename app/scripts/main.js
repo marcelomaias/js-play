@@ -1,10 +1,11 @@
-import Bouncer from 'formbouncerjs';
-import Rellax from 'rellax';
-import messages from './components/formMessages';
+import Bouncer from "formbouncerjs";
+import Rellax from "rellax";
+import ScrollOut from "scroll-out";
+import messages from "./components/formMessages";
 
 let items = [];
 
-const validate = new Bouncer('form', {
+const validate = new Bouncer("form", {
   messages: messages,
   // Form Submission
   disableSubmit: true, // If true, native form submission is suppressed even when form validates
@@ -13,7 +14,7 @@ const validate = new Bouncer('form', {
 });
 // Detect a successful form validation
 document.addEventListener(
-  'bouncerFormValid',
+  "bouncerFormValid",
   function(e) {
     // The successfully validated form
     const form = e.target;
@@ -31,7 +32,7 @@ function addItem(form) {
   };
   items.push(item);
   form.reset();
-  localStorage.setItem('Items', JSON.stringify(items));
+  localStorage.setItem("Items", JSON.stringify(items));
   printItem(items);
 }
 
@@ -39,25 +40,29 @@ const printItem = els => {
   const theItems = els
     .map(item => {
       return `
-    <h2>${item.nome}</h2>
-    <p>${item.email}</p>
+      <div class="item">
+        <h2>${item.nome}</h2>
+        <p>${item.email}</p>
+      </div>
   `;
     })
-    .join(' ');
+    .join(" ");
 
-  const container = document.getElementById('container');
+  const container = document.getElementById("container");
   container.innerHTML = theItems;
   document.body.append(container);
 };
 
-var hero = document.querySelector('.hero');
+// ################################### PARALAX SIMPLES
+
+var hero = document.querySelector(".hero");
 if (hero) {
-  window.addEventListener('scroll', scroll);
+  window.addEventListener("scroll", scroll);
 
   function scroll() {
     let scrolled = window.pageYOffset;
 
-    var coords = '0% ' + (-(scrolled * 0.3) + 'px');
+    var coords = "0% " + (-(scrolled * 0.3) + "px");
     hero.style.backgroundPosition = coords;
 
     // hero.style.top = -(scrolled * 0.2) + "px";
@@ -65,31 +70,37 @@ if (hero) {
   }
 }
 
-const openEls = document.querySelectorAll('[data-open]');
-const closeEls = document.querySelectorAll('[data-close]');
-const isVisible = 'is-visible';
+// ########################################### MODAL
+
+const openEls = document.querySelectorAll("[data-open]");
+const closeEls = document.querySelectorAll("[data-close]");
+const isVisible = "is-visible";
 
 for (const el of openEls) {
-  el.addEventListener('click', function() {
+  el.addEventListener("click", function() {
     const modalId = this.dataset.open;
     document.getElementById(modalId).classList.add(isVisible);
   });
 }
 for (const el of closeEls) {
-  el.addEventListener('click', function() {
+  el.addEventListener("click", function() {
     this.parentElement.parentElement.parentElement.classList.remove(isVisible);
   });
 }
-document.addEventListener('click', e => {
-  if (e.target == document.querySelector('.modal.is-visible')) {
-    document.querySelector('.modal.is-visible').classList.remove(isVisible);
+document.addEventListener("click", e => {
+  if (e.target == document.querySelector(".modal.is-visible")) {
+    document.querySelector(".modal.is-visible").classList.remove(isVisible);
   }
 });
 
-const rellaxItems = document.querySelector('.rellax');
-console.log(rellaxItems);
-if (rellaxItems) {
-  const rellax = new Rellax('.rellax', {
+// ########################################## RELLAX
+
+if (document.querySelector(".rellax")) {
+  const rellax = new Rellax(".rellax", {
     center: true
   });
 }
+
+// ########################################## SCROLL-OUT
+
+ScrollOut();

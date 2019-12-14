@@ -1,0 +1,9 @@
+[data-scroll] {
+  transition: opacity 2s;
+}
+[data-scroll="in"] {
+  opacity: 1;
+}
+[data-scroll="out"] {
+  opacity: 0;
+}

@@ -18,6 +18,7 @@ form {
   }
   button {
     margin: 1em 0;
+    cursor: pointer;
   }
   .error {
     border-color: red;
@@ -27,5 +28,18 @@ form {
   .error-message {
     color: red;
     font-style: italic;
+  }
+}
+.itemsContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 1em;
+  > div {
+    margin-bottom: 1em;
+    > * {
+      margin: 0;
+      margin: 0 0 0.1em 0;
+    }
   }
 }
