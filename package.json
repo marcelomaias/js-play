@@ -4,7 +4,8 @@
     "node": ">=4"
   },
   "dependencies": {
-    "formbouncerjs": "^1.4.6"
+    "formbouncerjs": "^1.4.6",
+    "rellax": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

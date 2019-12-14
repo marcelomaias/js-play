@@ -1,0 +1,11 @@
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  margin: 100px 0;
+  .box {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    background: lightskyblue;
+  }
+}
