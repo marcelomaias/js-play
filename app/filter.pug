@@ -1,0 +1,18 @@
+extends includes/layout
+
+block content
+    .container
+        section#filter
+            #filterBtns
+                button.btn.filter-active(data-filter="all") All
+                button.btn(data-filter="cars") Cars
+                button.btn(data-filter="animals") Animals
+                button.btn(data-filter="fruits") Fruits
+
+            #filterContent
+                .filterContent.cars BMW
+                .filterContent.cars Ford
+                .filterContent.animals Dog
+                .filterContent.animals Cat
+                .filterContent.fruits Orange
+                .filterContent.fruits.animals Banana

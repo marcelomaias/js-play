@@ -1,0 +1,47 @@
+#filter {
+  text-align: center;
+  #filterBtns {
+    display: inline-flex;
+    margin-bottom: 2em;
+    button {
+      font: inherit;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 0;
+      padding: 0.5em 1em;
+      display: block;
+      cursor: pointer;
+      &.filter-active {
+        background: #eee;
+      }
+    }
+  }
+  #filterContent {
+    display: flex;
+  }
+  .filterContent {
+    display: none;
+    width: 150px;
+    height: 150px;
+    margin: 2px;
+    background: rgb(203, 223, 247);
+    justify-content: center;
+  }
+  .show {
+    display: flex;
+    flex-direction: column;
+    animation: scale-display 1s;
+  }
+}
+
+@keyframes scale-display {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

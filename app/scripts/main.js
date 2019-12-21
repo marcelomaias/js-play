@@ -104,3 +104,55 @@ if (document.querySelector(".rellax")) {
 // ########################################## SCROLL-OUT
 
 ScrollOut();
+
+// ########################################## Filter
+
+function filterSelection(c) {
+  var filterContent, i;
+  filterContent = document.getElementsByClassName("filterContent");
+  if (c == "all") c = "";
+  // Add the "show" class to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < filterContent.length; i++) {
+    filterRemoveClass(filterContent[i], "show");
+    if (filterContent[i].className.indexOf(c) > -1)
+      filterAddClass(filterContent[i], "show");
+  }
+}
+
+// Show filtered elements
+function filterAddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function filterRemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("filterBtns");
+if (btnContainer) {
+  btnContainer.addEventListener("click", e => {
+    var current = document.getElementsByClassName("filter-active");
+    current[0].className = current[0].className.replace(" filter-active", "");
+    e.target.className += " filter-active";
+    filterSelection(e.target.dataset.filter);
+  });
+}
+
+filterSelection("all");
